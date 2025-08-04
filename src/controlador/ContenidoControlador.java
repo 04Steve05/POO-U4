@@ -1,25 +1,55 @@
 package src.controlador;
 import src.modelo.*;
 import src.vista.ConsolaVista;
+import src.servicio.ArchivosServicio;
+import src.servicio.CSVArchivosServicio;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ContenidoControlador {
+    private static final String ARCHIVO_DATOS = "datos/contenidos.csv";
+    
     private List<ContenidoAudiovisual> contenidos;
     private ConsolaVista vista;
+    private ArchivosServicio archivosServicio;
 
     public ContenidoControlador() {
         this.contenidos = new ArrayList<>();
         this.vista = new ConsolaVista();
+        this.archivosServicio = new CSVArchivosServicio();
     }
 
     public void inicializarSistema() {
         vista.mostrarTitulo();
-        cargarDatosPrueba();
+        cargarDatosDesdeArchivo();
+        
+        if (contenidos.isEmpty()) {
+            vista.mostrarMensaje("Primera ejecución. Creando contenido de ejemplo...");
+            cargarDatosPorDefecto();
+            guardarDatosEnArchivo();
+        }
+        
         mostrarTodosLosContenidos();
     }
 
-    private void cargarDatosPrueba() {
+    public void finalizarSistema() {
+        if (guardarDatosEnArchivo()) {
+            vista.mostrarMensaje("Sistema finalizado. Datos guardados correctamente.");
+        } else {
+            vista.mostrarError("Sistema finalizado con errores al guardar datos.");
+        }
+    }
+
+    private void cargarDatosDesdeArchivo() {
+        List<ContenidoAudiovisual> contenidosCargados = archivosServicio.cargarContenidos(ARCHIVO_DATOS);
+        contenidos.addAll(contenidosCargados);
+    }
+
+    private boolean guardarDatosEnArchivo() {
+        return archivosServicio.guardarContenidos(contenidos, ARCHIVO_DATOS);
+    }
+
+    private void cargarDatosPorDefecto() {
         crearPeliculaEjemplo();
         crearSerieEjemplo();
         crearDocumentalEjemplo();
@@ -64,10 +94,26 @@ public class ContenidoControlador {
 
     public void agregarContenido(ContenidoAudiovisual contenido) {
         contenidos.add(contenido);
-        vista.mostrarMensaje("Contenido agregado exitosamente: " + contenido.getTitulo());
+        if (guardarDatosEnArchivo()) {
+            vista.mostrarMensaje("Contenido agregado y guardado: " + contenido.getTitulo());
+        } else {
+            vista.mostrarError("Contenido agregado pero error al guardar: " + contenido.getTitulo());
+        }
     }
 
     public List<ContenidoAudiovisual> obtenerTodosLosContenidos() {
         return new ArrayList<>(contenidos);
+    }
+
+    public boolean eliminarContenido(int id) {
+        boolean eliminado = contenidos.removeIf(c -> c.getId() == id);
+        if (eliminado) {
+            if (guardarDatosEnArchivo()) {
+                vista.mostrarMensaje("Contenido eliminado correctamente.");
+            } else {
+                vista.mostrarError("Contenido eliminado pero error al guardar.");
+            }
+        }
+        return eliminado;
     }
 }
