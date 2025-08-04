@@ -14,7 +14,7 @@ public abstract class ContenidoAudiovisual {
         this.genero = genero;
     }
 
-    // Getters y Setters básicos
+    // Getters y Setters
     public int getId() { return id; }
     public String getTitulo() { return titulo; }
     public void setTitulo(String titulo) { this.titulo = titulo; }

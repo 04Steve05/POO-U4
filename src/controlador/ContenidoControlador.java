@@ -43,7 +43,6 @@ public class ContenidoControlador {
     }
 
     private void cargarDatosEjemplo() {
-        // Usando Factory Pattern (OCP)
         contenidos.add(ContenidoFactory.crearContenido("PELICULA", "Avatar", 125, 
                       "Acción", "20th Century Studios"));
         contenidos.add(ContenidoFactory.crearContenido("SERIEDETV", "Game of Thrones", 60, 
@@ -55,13 +54,11 @@ public class ContenidoControlador {
         contenidos.add(ContenidoFactory.crearContenido("VIDEOCLIP", "Bohemian Rhapsody", 6, 
                       "Rock", "Queen"));
 
-        // Agregar datos específicos usando interfaces (ISP)
         agregarDatosEspecificos();
     }
 
     private void agregarDatosEspecificos() {
         for (ContenidoAudiovisual contenido : contenidos) {
-            // LSP - Liskov Substitution: pueden sustituirse sin problemas
             if (contenido instanceof Pelicula) {
                 Pelicula pelicula = (Pelicula) contenido;
                 pelicula.agregarActor(new Actor("Sam Worthington", 45));

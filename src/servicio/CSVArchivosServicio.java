@@ -18,7 +18,7 @@ public class CSVArchivosServicio implements ArchivosServicio {
         }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
-            String linea = reader.readLine(); // Saltar cabecera
+            String linea = reader.readLine(); 
             
             while ((linea = reader.readLine()) != null) {
                 ContenidoAudiovisual contenido = procesarLineaCSV(linea);
@@ -138,7 +138,7 @@ public class CSVArchivosServicio implements ArchivosServicio {
                             Integer.parseInt(datosTemp[0].trim()),
                             Integer.parseInt(datosTemp[1].trim())));
                     } catch (NumberFormatException e) {
-                        // Ignorar temporada mal formateada
+                        
                     }
                 }
             }
