@@ -1,7 +1,7 @@
 /**
  * Class Investigador
  */
-package uni2a;
+package src.uni2a;
 
 // Clase Investigador para relación de composición con Documental
 public class Investigador {

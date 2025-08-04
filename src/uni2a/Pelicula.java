@@ -1,7 +1,7 @@
 /**
  * Class Pelicula
  */
-package uni2a;
+package src.uni2a;
 import java.util.ArrayList;
 
 // Subclase Pelicula que extiende de ContenidoAudiovisual

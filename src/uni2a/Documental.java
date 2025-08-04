@@ -1,7 +1,7 @@
 /**
  * Class Documental
  */
-package uni2a;
+package src.uni2a;
 import java.util.ArrayList;
 
 // Subclase Documental que extiende de ContenidoAudiovisual

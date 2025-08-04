@@ -1,5 +1,5 @@
-package poo;
-import uni2a.*;
+package src;
+import src.uni2a.*;
 
 public class PruebaAudioVisual {
     public static void main(String[] args) {

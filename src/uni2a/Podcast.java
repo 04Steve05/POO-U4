@@ -1,7 +1,7 @@
 /**
  * Class Podcast
  */
-package uni2a;
+package src.uni2a;
 
 // Subclase Podcast que extiende de ContenidoAudiovisual
 public class Podcast extends ContenidoAudiovisual {

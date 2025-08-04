@@ -1,7 +1,7 @@
 /**
  * Class SerieDeTV
  */
-package uni2a;
+package src.uni2a;
 import java.util.ArrayList;
 
 // Subclase SerieDeTV que extiende de ContenidoAudiovisual

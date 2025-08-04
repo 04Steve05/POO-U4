@@ -1,7 +1,7 @@
 /**
  * Class Actor
  */
-package uni2a;
+package src.uni2a;
 
 // Clase Actor para relación de asociación con Película
 public class Actor {

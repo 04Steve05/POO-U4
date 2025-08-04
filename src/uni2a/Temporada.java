@@ -1,7 +1,7 @@
 /**
  * Class Temporada
  */
-package uni2a;
+package src.uni2a;
 
 // Clase Temporada para relación de agregación con SerieDeTV
 public class Temporada {

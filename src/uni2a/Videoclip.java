@@ -1,7 +1,7 @@
 /**
  * Class Videoclip
  */
-package uni2a;
+package src.uni2a;
 
 // Subclase Videoclip que extiende de ContenidoAudiovisual
 public class Videoclip extends ContenidoAudiovisual {
