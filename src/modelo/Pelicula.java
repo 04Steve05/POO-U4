@@ -1,8 +1,9 @@
 package src.modelo;
+import src.modelo.interfaces.ConActores;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pelicula extends ContenidoAudiovisual {
+public class Pelicula extends ContenidoAudiovisual implements ConActores {
     private String estudio;
     private List<Actor> actores;
 
@@ -12,28 +13,29 @@ public class Pelicula extends ContenidoAudiovisual {
         this.actores = new ArrayList<>();
     }
 
-    public String getEstudio() {
-        return estudio;
-    }
+    public String getEstudio() { return estudio; }
+    public void setEstudio(String estudio) { this.estudio = estudio; }
 
-    public void setEstudio(String estudio) {
-        this.estudio = estudio;
-    }
-
+    // Implementación ConActores (ISP)
+    @Override
     public void agregarActor(Actor actor) {
-        actores.add(actor);
+        if (actor != null && !actores.contains(actor)) {
+            actores.add(actor);
+        }
     }
 
-    public List<Actor> getActores() {
-        return new ArrayList<>(actores);
-    }
+    @Override
+    public List<Actor> getActores() { return new ArrayList<>(actores); }
+
+    @Override
+    public boolean tieneActores() { return !actores.isEmpty(); }
 
     @Override
     public String obtenerDetallesEspecificos() {
         StringBuilder detalles = new StringBuilder();
         detalles.append("Estudio: ").append(estudio);
         
-        if (!actores.isEmpty()) {
+        if (tieneActores()) {
             detalles.append(" | Actores: ");
             for (int i = 0; i < actores.size(); i++) {
                 if (i > 0) detalles.append(", ");

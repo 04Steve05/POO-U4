@@ -8,13 +8,8 @@ public class Videoclip extends ContenidoAudiovisual {
         this.artista = artista;
     }
 
-    public String getArtista() {
-        return artista;
-    }
-
-    public void setArtista(String artista) {
-        this.artista = artista;
-    }
+    public String getArtista() { return artista; }
+    public void setArtista(String artista) { this.artista = artista; }
 
     @Override
     public String obtenerDetallesEspecificos() {

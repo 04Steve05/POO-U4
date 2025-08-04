@@ -8,13 +8,8 @@ public class Podcast extends ContenidoAudiovisual {
         this.host = host;
     }
 
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
+    public String getHost() { return host; }
+    public void setHost(String host) { this.host = host; }
 
     @Override
     public String obtenerDetallesEspecificos() {

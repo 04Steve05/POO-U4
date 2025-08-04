@@ -1,8 +1,9 @@
 package src.modelo;
+import src.modelo.interfaces.ConTemporadas;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SerieDeTV extends ContenidoAudiovisual {
+public class SerieDeTV extends ContenidoAudiovisual implements ConTemporadas {
     private int totalTemporadas;
     private List<Temporada> temporadas;
 
@@ -12,21 +13,21 @@ public class SerieDeTV extends ContenidoAudiovisual {
         this.temporadas = new ArrayList<>();
     }
 
-    public int getTotalTemporadas() {
-        return totalTemporadas;
-    }
-
-    public void setTotalTemporadas(int totalTemporadas) {
-        this.totalTemporadas = totalTemporadas;
-    }
-
+    // Implementación ConTemporadas (ISP)
+    @Override
     public void agregarTemporada(Temporada temporada) {
-        temporadas.add(temporada);
+        if (temporada != null && !temporadas.contains(temporada)) {
+            temporadas.add(temporada);
+        }
     }
 
-    public List<Temporada> getTemporadas() {
-        return new ArrayList<>(temporadas);
-    }
+    @Override
+    public List<Temporada> getTemporadas() { return new ArrayList<>(temporadas); }
+
+    @Override
+    public int getTotalTemporadas() { return totalTemporadas; }
+
+    public void setTotalTemporadas(int totalTemporadas) { this.totalTemporadas = totalTemporadas; }
 
     @Override
     public String obtenerDetallesEspecificos() {

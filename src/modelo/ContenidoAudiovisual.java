@@ -14,34 +14,16 @@ public abstract class ContenidoAudiovisual {
         this.genero = genero;
     }
 
-    public int getId() {
-        return id;
-    }
+    // Getters y Setters básicos
+    public int getId() { return id; }
+    public String getTitulo() { return titulo; }
+    public void setTitulo(String titulo) { this.titulo = titulo; }
+    public int getDuracionMinutos() { return duracionMinutos; }
+    public void setDuracionMinutos(int duracionMinutos) { this.duracionMinutos = duracionMinutos; }
+    public String getGenero() { return genero; }
+    public void setGenero(String genero) { this.genero = genero; }
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public int getDuracionMinutos() {
-        return duracionMinutos;
-    }
-
-    public void setDuracionMinutos(int duracionMinutos) {
-        this.duracionMinutos = duracionMinutos;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
+    // Método abstracto
     public abstract String obtenerDetallesEspecificos();
     
     public String obtenerInformacionBasica() {

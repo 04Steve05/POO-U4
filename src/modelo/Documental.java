@@ -1,8 +1,9 @@
 package src.modelo;
+import src.modelo.interfaces.ConInvestigadores;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Documental extends ContenidoAudiovisual {
+public class Documental extends ContenidoAudiovisual implements ConInvestigadores {
     private String tema;
     private List<Investigador> investigadores;
 
@@ -12,28 +13,29 @@ public class Documental extends ContenidoAudiovisual {
         this.investigadores = new ArrayList<>();
     }
 
-    public String getTema() {
-        return tema;
-    }
+    public String getTema() { return tema; }
+    public void setTema(String tema) { this.tema = tema; }
 
-    public void setTema(String tema) {
-        this.tema = tema;
-    }
-
+    // Implementación ConInvestigadores (ISP)
+    @Override
     public void agregarInvestigador(Investigador investigador) {
-        investigadores.add(investigador);
+        if (investigador != null && !investigadores.contains(investigador)) {
+            investigadores.add(investigador);
+        }
     }
 
-    public List<Investigador> getInvestigadores() {
-        return new ArrayList<>(investigadores);
-    }
+    @Override
+    public List<Investigador> getInvestigadores() { return new ArrayList<>(investigadores); }
+
+    @Override
+    public boolean tieneInvestigadores() { return !investigadores.isEmpty(); }
 
     @Override
     public String obtenerDetallesEspecificos() {
         StringBuilder detalles = new StringBuilder();
         detalles.append("Tema: ").append(tema);
         
-        if (!investigadores.isEmpty()) {
+        if (tieneInvestigadores()) {
             detalles.append(" | Investigadores: ");
             for (int i = 0; i < investigadores.size(); i++) {
                 if (i > 0) detalles.append(", ");
