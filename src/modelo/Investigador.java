@@ -1,9 +1,5 @@
-/**
- * Class Investigador
- */
-package src.uni2a;
+package src.modelo;
 
-// Clase Investigador para relación de composición con Documental
 public class Investigador {
     private String nombre;
     private String especialidad;
@@ -27,5 +23,10 @@ public class Investigador {
 
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s (Especialidad: %s)", nombre, especialidad);
     }
 }

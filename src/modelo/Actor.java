@@ -1,9 +1,5 @@
-/**
- * Class Actor
- */
-package src.uni2a;
+package src.modelo;
 
-// Clase Actor para relación de asociación con Película
 public class Actor {
     private String nombre;
     private int edad;
@@ -27,5 +23,10 @@ public class Actor {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s (%d años)", nombre, edad);
     }
 }
